@@ -7,6 +7,7 @@ import UserContext from '../Context/UserContext';
 
 const DashRoute = React.lazy(() => import('../containers/Dashboard'))
 const ResponsiveRoute = React.lazy(() => import('../containers/responsiveBoxes'))
+const ChartsRoute = React.lazy(() => import('../containers/charts'))
 
 const AppRouter = () => {
 	
@@ -30,6 +31,12 @@ const AppRouter = () => {
 		      	<Route exact path="/itemDetails" exact render={() => (
 		      	  <React.Suspense fallback={<p>Loading Item Details...</p>}>
 		      	  	<DetailRoute />
+		      	  </React.Suspense>
+		      	)} />
+
+		      	<Route exact path="/charts" exact render={() => (
+		      	  <React.Suspense fallback={<p>Loading Item Details...</p>}>
+		      	  	<ChartsRoute />
 		      	  </React.Suspense>
 		      	)} />
 
