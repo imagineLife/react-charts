@@ -1,8 +1,8 @@
 import React from 'react';
 import ResponsiveWrapper from './../../components/ResponsiveWrapper';
-import { stratify, treemap } from 'd3-hierarchy';
+import { stratify, treemap, treemapResquarify } from 'd3-hierarchy';
 
-const useHierarchy = (data) => {
+const useHierarchy = (data, w, h) => {
   function sumBySize(d) {
     return d.size;
   }
@@ -20,21 +20,41 @@ const useHierarchy = (data) => {
     .sum(sumBySize)
     .sort((a, b) => b.height - a.height || b.value - a.value);
 
-  treemap(hierarched);
-  return [hierarched];
+  var treemapify = treemap()
+    .tile(treemapResquarify)
+    .size([w, h])
+    .round(true)
+    .paddingInner(1);
+
+  const treeData = treemapify(hierarched).leaves();
+
+  return [treeData];
 };
 
 const Treemap = ({ width, height, margins, className, data }) => {
-  const [hierachyData] = useHierarchy(data);
-  console.log('TreeMap rendering');
-  const thisThing = 'water';
+  const [hierachyData] = useHierarchy(data, width, height);
+  console.log('hierachyData');
+  console.log(hierachyData);
+  console.log('// - - - - - //');
+
   return (
     <svg className={`${className}-svg`} {...{ height, width }}>
       <g
-        className="line-group"
+        className="treemap-group"
         transform={`translate(${margins.l},${margins.t})`}
       >
-        <text>test</text>
+        {!hierachyData
+          ? null
+          : hierachyData.map((itm, itmIdx) => (
+              <g key={`block-${itmIdx}`} className="treemap-block">
+                <rect
+                  id={itm.data.id}
+                  width={itm.x1 - itm.x0}
+                  height={itm.y1 - itm.y0}
+                  fill={'orange'}
+                />
+              </g>
+            ))}
       </g>
     </svg>
   );
