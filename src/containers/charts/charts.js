@@ -16,6 +16,7 @@ const Charts = () => {
     type: 'Band',
     ...dims
   };
+
   const treeMapProps = {
     className: 'treeMap',
     data: treeMapData,
