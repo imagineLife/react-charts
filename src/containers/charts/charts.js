@@ -25,14 +25,14 @@ const Charts = () => {
 
 	return (
 		<Fragment>
-		<Line
-			{...lineProps}
-		/>
-		<Treemap
-			{...treeMapProps}
-		/>
-		</Fragment>
-)
+			<Line
+				{...lineProps}
+			/>
+			<Treemap
+				{...treeMapProps}
+			/>
+			</Fragment>
+	)
 };
 
 export default Charts;
