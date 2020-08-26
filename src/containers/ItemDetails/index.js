@@ -1,7 +1,5 @@
-import React from "react"
+import React from 'react';
 
 const ItemDetails = () => {
-	(
-		<p>Item Details Here</p>
-	)
-}
+  <p>Item Details Here</p>;
+};

@@ -1,10 +1,9 @@
-import React from 'react'
-import './index.css'
-import ResponsiveWrapper from './ResponsiveWrapper'
+import React from 'react';
+import './index.css';
+import ResponsiveWrapper from './ResponsiveWrapper';
 import useWindowSize from './Hooks/UseWindowSize';
 
 let boxesArr = [
-
   // ROW 1
   [
     { class: 'col-2', box: 'orange', txt: '2 columns' },
@@ -45,37 +44,33 @@ let boxesArr = [
   ],
 
   //ROW 6
-  [
-    { class: 'col-12', box: 'black', txt: '6 columns' }
-  ]
-]
+  [{ class: 'col-12', box: 'black', txt: '6 columns' }]
+];
 
 const ResponsiveBoxes = () => {
+  const size = useWindowSize();
 
-  const size = useWindowSize()
-  
-  return(
+  return (
     <main role="main">
-
-    {boxesArr.map((boxArr, ind) => {
-      return(
-        <div 
-        key={`boxRow${ind}`}
-        className="row">
-        {boxArr.map((b,idx) => {
-          return(
-            <ResponsiveWrapper 
-            key={`individualBox${idx} row${ind}`}
-            boxWrapperClass={b.class}
-            boxClassName={b.box}
-            boxTxt={b.txt}
-            parentSize={size}/>
-          )
-        })}
-      </div>)
-    })}
-
-  </main>)
-}
+      {boxesArr.map((boxArr, ind) => {
+        return (
+          <div key={`boxRow${ind}`} className="row">
+            {boxArr.map((b, idx) => {
+              return (
+                <ResponsiveWrapper
+                  key={`individualBox${idx} row${ind}`}
+                  boxWrapperClass={b.class}
+                  boxClassName={b.box}
+                  boxTxt={b.txt}
+                  parentSize={size}
+                />
+              );
+            })}
+          </div>
+        );
+      })}
+    </main>
+  );
+};
 
 export default ResponsiveBoxes;

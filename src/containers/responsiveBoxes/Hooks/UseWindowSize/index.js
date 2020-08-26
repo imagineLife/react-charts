@@ -2,7 +2,6 @@ import React from 'react';
 
 // Hook
 function useWindowSize() {
-
   let resizeID;
 
   const isClient = typeof window === 'object';
@@ -20,15 +19,13 @@ function useWindowSize() {
     if (!isClient) {
       return false;
     }
-    
+
     function handleResize() {
-      
       clearTimeout(resizeID);
 
       resizeID = setTimeout(() => {
-        setWindowSize(getSize());  
-      }, 150)
-      
+        setWindowSize(getSize());
+      }, 150);
     }
 
     window.addEventListener('resize', handleResize);
@@ -38,4 +35,4 @@ function useWindowSize() {
   return windowSize;
 }
 
-export default useWindowSize
+export default useWindowSize;

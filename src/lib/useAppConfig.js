@@ -1,22 +1,21 @@
-import React from 'react'; 
-
+import React from 'react';
 
 /* Loads app config file */
 
 const useAppConfig = () => {
-	let [ appConfig, setAppConfig ] = React.useState(null)
+  let [appConfig, setAppConfig] = React.useState(null);
 
-	React.useEffect(() => {
-		setTimeout(() => {
-			fetch(`./appconfig/config.js`)
-			.then(res => res.json()) 
-			.then(res => {
-				setAppConfig(res[0])	
-			})
-		}, 1500)
-	}, [])
+  React.useEffect(() => {
+    setTimeout(() => {
+      fetch(`./appconfig/config.js`)
+        .then((res) => res.json())
+        .then((res) => {
+          setAppConfig(res[0]);
+        });
+    }, 1500);
+  }, []);
 
-	return appConfig
-}
+  return appConfig;
+};
 
-export { useAppConfig }
+export { useAppConfig };
