@@ -5,14 +5,14 @@ import * as dscl from 'd3-scale';
 
 const Line = ({width, height, data, margins, type, className}) => {
 	const { xDomain, yDomain, points } = data;
-	console.log('points')
-	console.log(points)
 
 	let lineSize = {
 		w : width - margins.l,
 		h : height - margins.t
 	}
 	
+	const scaledX = d => xScale(d.x)
+	const scaledY = d => yScale(d.y);
 
 	let thisScale = `scale${type}`
 	
@@ -25,17 +25,8 @@ const Line = ({width, height, data, margins, type, className}) => {
 		.range([height - margins.b, margins.t]);
 	
 	let thisLine = dsh.line()
-	.x(d => xScale(d.x))
-	.y(d => {
-		const scaledY = yScale(d.y)
-		console.log('scaledY')
-		console.log(scaledY)
-		
-		return scaledY
-	});
-	
-	console.log('thisLine(points)')
-	console.log(thisLine(points))
+	.x(scaledX)
+	.y(scaledY);
 	
 	return(
 		<ResponsiveWrapper 
