@@ -33,9 +33,6 @@ const useHierarchy = (data, w, h) => {
 
 const Treemap = ({ width, height, margins, className, data }) => {
   const [hierachyData] = useHierarchy(data, width, height);
-  console.log('hierachyData');
-  console.log(hierachyData);
-  console.log('// - - - - - //');
 
   return (
     <svg className={`${className}-svg`} {...{ height, width }}>
@@ -46,7 +43,11 @@ const Treemap = ({ width, height, margins, className, data }) => {
         {!hierachyData
           ? null
           : hierachyData.map((itm, itmIdx) => (
-              <g key={`block-${itmIdx}`} className="treemap-block">
+              <g
+                key={`block-${itmIdx}`}
+                className="treemap-block"
+                transform={`translate(${itm.x0},${itm.y0})`}
+              >
                 <rect
                   id={itm.data.id}
                   width={itm.x1 - itm.x0}
