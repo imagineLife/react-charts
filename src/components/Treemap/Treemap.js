@@ -1,6 +1,8 @@
 import React from 'react';
 import ResponsiveWrapper from './../../components/ResponsiveWrapper';
 import { stratify, treemap, treemapResquarify } from 'd3-hierarchy';
+import { schemeDark2 } from 'd3-scale-chromatic';
+import { scaleOrdinal } from 'd3-scale';
 
 const useHierarchy = (data, w, h) => {
   function sumBySize(d) {
@@ -34,6 +36,7 @@ const useHierarchy = (data, w, h) => {
 const Treemap = ({ width, height, margins, className, data }) => {
   const [hierachyData] = useHierarchy(data, width, height);
 
+  const colorScale = scaleOrdinal(schemeDark2);
   return (
     <svg className={`${className}-svg`} {...{ height, width }}>
       <g
@@ -52,7 +55,7 @@ const Treemap = ({ width, height, margins, className, data }) => {
                   id={itm.data.id}
                   width={itm.x1 - itm.x0}
                   height={itm.y1 - itm.y0}
-                  fill={'orange'}
+                  fill={colorScale(itm.parent.data.id)}
                 />
               </g>
             ))}
