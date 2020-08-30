@@ -1,2 +1,2 @@
-import Line from './Line';
-export default Line;
+import Bubble from './Bubble';
+export default Bubble;
