@@ -1,8 +1,14 @@
 import React, { Fragment } from 'react';
+
+// data
 import lineData from './../../data/line.json';
 import treeMapData from './../../data/treeMap.json';
+import bubbleData from './../../data/MockBubble.json';
+
+// Components
 import Line from './../../components/Line';
 import Treemap from './../../components/Treemap';
+import Bubble from './../../components/Bubble';
 const Charts = () => {
   const dims = {
     width: 450,
@@ -27,6 +33,7 @@ const Charts = () => {
     <Fragment>
       <Line {...lineProps} />
       <Treemap {...treeMapProps} />
+      <Bubble {...treeMapProps} />
     </Fragment>
   );
 };
