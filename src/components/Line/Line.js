@@ -26,7 +26,7 @@ const Line = ({ width, height, data, margins, type, className }) => {
   let thisLine = dsh.line().x(scaledX).y(scaledY);
 
   return (
-    <ResponsiveWrapper className="lineBox" dimensions={{ w: width, h: height }}>
+    <ResponsiveWrapper dimensions={{ w: width, h: height }}>
       <svg className={`${className}-svg`} {...{ height, width }}>
         <g
           className="line-group"
