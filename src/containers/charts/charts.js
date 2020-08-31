@@ -4,11 +4,13 @@ import React, { Fragment } from 'react';
 import lineData from './../../data/line.json';
 import treeMapData from './../../data/treeMap.json';
 import bubbleData from './../../data/MockBubble.json';
+import packedBubbleData from './../../data/PackData.json';
 
 // Components
 import Line from './../../components/Line';
 import Treemap from './../../components/Treemap';
 import Bubble from './../../components/Bubble';
+import PackedBubble from './../../components/PackedBubble';
 const Charts = () => {
   const dims = {
     width: 450,
@@ -34,6 +36,7 @@ const Charts = () => {
       <Line {...lineProps} />
       <Treemap {...treeMapProps} />
       <Bubble {...treeMapProps} data={bubbleData} />
+      <PackedBubble {...treeMapProps} data={packedBubbleData} />
     </Fragment>
   );
 };
