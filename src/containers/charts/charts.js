@@ -33,7 +33,7 @@ const Charts = () => {
     <Fragment>
       <Line {...lineProps} />
       <Treemap {...treeMapProps} />
-      <Bubble {...treeMapProps} />
+      <Bubble {...treeMapProps} data={bubbleData} />
     </Fragment>
   );
 };
