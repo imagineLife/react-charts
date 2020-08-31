@@ -27,7 +27,6 @@ const Bubble = ({ width, height, data, margins, type, className }) => {
   const colorScale = dscl.scaleOrdinal(schemeDark2);
 
   let myTickFn = () => {
-    console.log('tick!');
     d3S
       .select(circleGWrapper.current)
       .selectAll('circle')
