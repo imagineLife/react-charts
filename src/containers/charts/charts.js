@@ -11,6 +11,7 @@ import Line from './../../components/Line';
 import Treemap from './../../components/Treemap';
 import Bubble from './../../components/Bubble';
 import PackedBubble from './../../components/PackedBubble';
+import TreeLayout from './../../components/TreeLayout';
 const Charts = () => {
   const dims = {
     width: 450,
@@ -37,6 +38,7 @@ const Charts = () => {
       <Treemap {...treeMapProps} />
       <Bubble {...treeMapProps} data={bubbleData} />
       <PackedBubble {...treeMapProps} data={packedBubbleData} />
+      <TreeLayout {...treeMapProps} />
     </Fragment>
   );
 };
