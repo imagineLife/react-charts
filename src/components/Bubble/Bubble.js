@@ -9,9 +9,6 @@ import * as d3S from 'd3-selection';
 import 'd3-selection-multi';
 
 const Bubble = ({ width, height, data, margins, type, className }) => {
-  console.log('data');
-  console.log(data);
-
   const circleGWrapper = useRef();
   const smallerDimension = Math.min(width, height);
 
@@ -60,8 +57,6 @@ const Bubble = ({ width, height, data, margins, type, className }) => {
         >
           {data.map((d, idx) => {
             const circleR = radiusScale(d.sales);
-            console.log('circleR');
-            console.log(circleR);
             return (
               <circle
                 key={`bubble-chart-circle-${idx}`}
