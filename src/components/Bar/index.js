@@ -1,2 +1,2 @@
-import Line from './Line';
-export default Line;
+import Bar from './Bar';
+export default Bar;
