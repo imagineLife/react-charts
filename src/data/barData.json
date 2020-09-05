@@ -1,0 +1,30 @@
+{
+	"xDomain": ["Joe", "Sally", "Anne", "Max", "Sanford", "Brent"],
+	"yDomain":[0,60],
+	"points": [
+		{
+			"x": "Joe",
+			"y": 33
+		},
+		{
+			"x": "Sally",
+			"y": 14
+		},
+		{
+			"x": "Anne",
+			"y": 51
+		},
+		{
+			"x": "Max",
+			"y": 42
+		},
+		{
+			"x": "Sanford",
+			"y": 27
+		},
+		{
+			"x": "Brent",
+			"y": 58
+		}
+	]
+}
