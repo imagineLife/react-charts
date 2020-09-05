@@ -5,6 +5,7 @@ import lineData from './../../data/line.json';
 import treeMapData from './../../data/treeMap.json';
 import bubbleData from './../../data/MockBubble.json';
 import packedBubbleData from './../../data/PackData.json';
+import barData from './../../data/barData.json';
 
 // Components
 import Line from './../../components/Line';
@@ -12,6 +13,8 @@ import Treemap from './../../components/Treemap';
 import Bubble from './../../components/Bubble';
 import PackedBubble from './../../components/PackedBubble';
 import TreeLayout from './../../components/TreeLayout';
+import Bar from './../../components/Bar';
+
 const Charts = () => {
   const dims = {
     width: 450,
@@ -32,6 +35,14 @@ const Charts = () => {
     ...dims
   };
 
+  const barProps = {
+    className: 'this-one',
+    data: barData,
+    type: 'Band',
+    barWidthPercentage: 0.5,
+    ...dims
+  };
+
   return (
     <Fragment>
       <Line {...lineProps} />
@@ -39,6 +50,7 @@ const Charts = () => {
       <Bubble {...treeMapProps} data={bubbleData} />
       <PackedBubble {...treeMapProps} data={packedBubbleData} />
       <TreeLayout {...treeMapProps} />
+      <Bar {...barProps} />
     </Fragment>
   );
 };
