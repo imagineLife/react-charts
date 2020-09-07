@@ -65,7 +65,7 @@
     {"id": "Montparnasse", "group": 4},
     {"id": "Child1", "group": 10},
     {"id": "Child2", "group": 10},
-    {"id": "Brujon", "group": 4},
+    {"id": "Brujon", "group": 4}
   ],
   "links": [
     {"source": "Napoleon", "target": "Myriel", "value": 1},
