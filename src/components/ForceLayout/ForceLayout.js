@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import ResponsiveWrapper from './../../components/ResponsiveWrapper';
 import * as d3F from 'd3-force';
 import * as d3S from 'd3-selection';
@@ -12,7 +12,7 @@ const ForceLayout = ({
   className,
   barWidthPercentage
 }) => {
-  const forceProperties = {
+  const [forceProperties] = useState({
     center: {
       x: 0.5,
       y: 0.5
@@ -21,7 +21,7 @@ const ForceLayout = ({
       enabled: true,
       strength: -30,
       distanceMin: 1,
-      distanceMax: 2000
+      distanceMax: Math.min(width * 0.35, height * 0.35)
     },
     collide: {
       enabled: true,
@@ -44,7 +44,8 @@ const ForceLayout = ({
       distance: 30,
       iterations: 1
     }
-  };
+  });
+
   const gRef = useRef();
   const { nodes, links } = data;
 
@@ -69,6 +70,7 @@ const ForceLayout = ({
     //set up simulation
     let sim = d3F.forceSimulation();
     sim.nodes(nodes);
+
     sim
       .force('link', d3F.forceLink())
       .force('charge', d3F.forceManyBody())
