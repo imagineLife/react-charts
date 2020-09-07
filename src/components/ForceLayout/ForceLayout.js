@@ -1,8 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import ResponsiveWrapper from './../../components/ResponsiveWrapper';
-import * as dsh from 'd3-shape';
-import * as dscl from 'd3-scale';
 import * as d3F from 'd3-force';
+import * as d3S from 'd3-selection';
 
 const ForceLayout = ({
   width,
@@ -47,13 +46,81 @@ const ForceLayout = ({
     }
   };
   const gRef = useRef();
-  const { nodes, link } = data;
+  const { nodes, links } = data;
 
   useEffect(() => {
-    console.log('gRef');
-    console.log(gRef.current);
+    const gElm = gRef.current;
 
-    console.log('inside effect!');
+    const { collide, center, charge, forceX, forceY, link } = forceProperties;
+
+    let forceNodes = d3S
+      .select(gElm)
+      .selectAll('circle')
+      .data(nodes)
+      .enter()
+      .append('circle')
+      .attr('r', collide.radius)
+      .attr('stroke', charge.strength > 0 ? 'blue' : 'red')
+      .attr(
+        'stroke-width',
+        charge.enabled == false ? 0 : Math.abs(charge.strength) / 15
+      );
+
+    //set up simulation
+    let sim = d3F.forceSimulation();
+    sim.nodes(nodes);
+    sim
+      .force('link', d3F.forceLink())
+      .force('charge', d3F.forceManyBody())
+      .force('collide', d3F.forceCollide())
+      .force('center', d3F.forceCenter())
+      .force('forceX', d3F.forceX())
+      .force('forceY', d3F.forceY());
+
+    //apply more props to simulations
+    sim
+      .force('center')
+      .x(width * center.x)
+      .y(height * center.y);
+    sim
+      .force('charge')
+      .strength(charge.strength * charge.enabled)
+      .distanceMin(charge.distanceMin)
+      .distanceMax(charge.distanceMax);
+    sim
+      .force('collide')
+      .strength(collide.strength * collide.enabled)
+      .radius(collide.radius)
+      .iterations(collide.iterations);
+    sim
+      .force('forceX')
+      .strength(forceX.strength * forceX.enabled)
+      .x(width * forceX.x);
+    sim
+      .force('forceY')
+      .strength(forceY.strength * forceY.enabled)
+      .y(height * forceY.y);
+    sim
+      .force('link')
+      .id(function (d) {
+        return d.id;
+      })
+      .distance(link.distance)
+      .iterations(link.iterations)
+      .links(link.enabled ? links : []);
+
+    // updates ignored until this is run
+    // restarts the sim (important if sim has already slowed down)
+    // sim.alpha(1).restart();
+    sim.on('tick', () => {
+      forceNodes
+        .attr('cx', function (d) {
+          return d.x;
+        })
+        .attr('cy', function (d) {
+          return d.y;
+        });
+    });
   });
 
   return (
