@@ -12,6 +12,11 @@ const ForceLayout = ({
   className,
   barWidthPercentage
 }) => {
+  const [sim] = useState(d3F.forceSimulation());
+  const [forceYVal, setForceYVal] = useState(0.2);
+  console.log('forceYVal');
+  console.log(forceYVal);
+
   const [forceProperties] = useState({
     center: {
       x: 0.5,
@@ -37,7 +42,7 @@ const ForceLayout = ({
     forceY: {
       enabled: false,
       strength: 0.1,
-      y: 0.5
+      y: forceYVal
     },
     link: {
       enabled: true,
@@ -48,6 +53,11 @@ const ForceLayout = ({
 
   const gRef = useRef();
   const { nodes, links } = data;
+
+  // restarts the sim (important if sim has already slowed down)
+  // useEffect(() => {
+  //   sim.alpha(1).restart();
+  // }, [forceYVal]);
 
   useEffect(() => {
     const gElm = gRef.current;
@@ -67,8 +77,6 @@ const ForceLayout = ({
         charge.enabled == false ? 0 : Math.abs(charge.strength) / 15
       );
 
-    //set up simulation
-    let sim = d3F.forceSimulation();
     sim.nodes(nodes);
 
     sim
@@ -83,7 +91,7 @@ const ForceLayout = ({
     sim
       .force('center')
       .x(width * center.x)
-      .y(height * center.y);
+      .y(height * 0.8 * center.y);
     sim
       .force('charge')
       .strength(charge.strength * charge.enabled)
@@ -100,8 +108,8 @@ const ForceLayout = ({
       .x(width * forceX.x);
     sim
       .force('forceY')
-      .strength(forceY.strength * forceY.enabled)
-      .y(height * forceY.y);
+      .strength(forceY.strength) // * forceY.enabled
+      .y(height * 0.8 * forceYVal);
     sim
       .force('link')
       .id(function (d) {
@@ -111,9 +119,7 @@ const ForceLayout = ({
       .iterations(link.iterations)
       .links(link.enabled ? links : []);
 
-    // updates ignored until this is run
-    // restarts the sim (important if sim has already slowed down)
-    // sim.alpha(1).restart();
+    // runs node/link updates on simulation-tick
     sim.on('tick', () => {
       forceNodes
         .attr('cx', function (d) {
@@ -127,6 +133,7 @@ const ForceLayout = ({
 
   return (
     <ResponsiveWrapper dimensions={{ w: width, h: height }}>
+      <button onClick={() => setForceYVal(0.95)}>Update</button>
       <svg className={`${className}-svg`} {...{ height, width }}>
         <g
           className="bar-group"
