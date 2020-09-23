@@ -15,6 +15,7 @@ const ResponsiveRoute = React.lazy(() =>
   import('../containers/responsiveBoxes')
 );
 const ChartsRoute = React.lazy(() => import('../containers/charts'));
+const WidgetsRoute = React.lazy(() => import('../containers/widgets'));
 
 const AppRouter = () => {
   return (
@@ -60,6 +61,17 @@ const AppRouter = () => {
           render={() => (
             <React.Suspense fallback={<p>Loading Item Details...</p>}>
               <ChartsRoute />
+            </React.Suspense>
+          )}
+        />
+
+        <Route
+          exact
+          path="/widgets"
+          exact
+          render={() => (
+            <React.Suspense fallback={<p>Loading Item Details...</p>}>
+              <WidgetsRoute />
             </React.Suspense>
           )}
         />
