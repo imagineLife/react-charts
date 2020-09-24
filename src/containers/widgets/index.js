@@ -1,2 +1,2 @@
-import charts from './charts';
-export default charts;
+import widgets from './widgets';
+export default widgets;
