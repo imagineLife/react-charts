@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 
 //css
+import './../../float-grid.css';
 import './widgets.css';
 
 // data
@@ -20,7 +21,7 @@ import TreeLayout from './../../components/TreeLayout';
 import Bar from './../../components/Bar';
 import ForceLayout from './../../components/ForceLayout';
 
-const Charts = () => {
+const Widgets = () => {
   const dims = {
     width: 450,
     height: 250,
@@ -57,16 +58,20 @@ const Charts = () => {
   };
 
   return (
-    <Fragment>
-      <Line {...lineProps} />
-      <Treemap {...treeMapProps} />
+    <main id="responsive" className="test">
+      <section className="row">
+        <Line {...lineProps} />
+      </section>
+    </main>
+  );
+};
+
+/*
+  <Treemap {...treeMapProps} />
       <Bubble {...treeMapProps} data={bubbleData} />
       <PackedBubble {...treeMapProps} data={packedBubbleData} />
       <TreeLayout {...treeMapProps} />
       <Bar {...barProps} />
       <ForceLayout {...forceLayoutProps} />
-    </Fragment>
-  );
-};
-
-export default Charts;
+*/
+export default Widgets;
