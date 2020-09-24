@@ -64,7 +64,10 @@ const Widgets = () => {
         <Line {...lineProps} />
       </section>
       <section className="row">
-        <Card className="col-2" />
+        <Card className="col-3" />
+        <Card className="col-3" />
+        <Card className="col-3" />
+        <Card className="col-3" />
       </section>
     </main>
   );
