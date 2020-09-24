@@ -1,5 +1,8 @@
 import React, { Fragment } from 'react';
 
+//css
+import './widgets.css';
+
 // data
 import lineData from './../../data/line.json';
 import treeMapData from './../../data/treeMap.json';
