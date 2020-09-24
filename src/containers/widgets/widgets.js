@@ -13,6 +13,7 @@ import barData from './../../data/barData.json';
 import forceLayoutData from './../../data/ForceLayout.json';
 
 // Components
+import Card from './../../components/Card';
 import Line from './../../components/Line';
 import Treemap from './../../components/Treemap';
 import Bubble from './../../components/Bubble';
@@ -61,6 +62,9 @@ const Widgets = () => {
     <main id="responsive" className="test">
       <section className="row">
         <Line {...lineProps} />
+      </section>
+      <section className="row">
+        <Card className="col-2" />
       </section>
     </main>
   );
