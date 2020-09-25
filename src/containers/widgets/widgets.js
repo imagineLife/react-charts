@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 
 //css
-import './../../float-grid.css';
+import './../../float-grid.scss';
 import './widgets.css';
 
 // data
