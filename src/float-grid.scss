@@ -1,13 +1,11 @@
 /*
   Variables
 */
-:root{
-  --max-width: 1000px;
-  --gutter: 20px;
-  --mwnumber: 1000; /*max-width-number*/
-  --hgwnumber: 10; /*half-gutter-width-number*/
-  --gwnumber: 20; /*half-gutter-width-number*/
-};
+$max-width: 1000px;
+$gutter: 20px;
+$mwnumber: 1000; /*max-width-number*/
+$hgwnumber: 10; /*half-gutter-width-number*/
+$gwnumber: 20; /*half-gutter-width-number*/
 
 /* Grid measurements:
   MAX-WIDTH = 1000px;
@@ -23,9 +21,9 @@
  
  **/
 .row {
-  max-width: var(--max-width);
-  padding-left: var(--gutter);
-  padding-right: var(--gutter);
+  max-width: $max-width;
+  padding-left: $gutter;
+  padding-right: $gutter;
   margin: 0 auto;
 }
 
