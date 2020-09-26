@@ -22,6 +22,11 @@ import TreeLayout from './../../components/TreeLayout';
 import Bar from './../../components/Bar';
 import ForceLayout from './../../components/ForceLayout';
 
+const rowsOfDivs = [
+  ['col-6', 'col-6'],
+  ['col-6', 'col-6']
+];
+
 const Widgets = () => {
   const dims = {
     width: 450,
@@ -63,6 +68,14 @@ const Widgets = () => {
       <section className="row">
         <Line {...lineProps} />
       </section>
+      {rowsOfDivs.map((row, rowIdx) => (
+        <section key={`row-of-divs-${rowIdx}`} className="row">
+          {row.map((itm, itmIdx) => (
+            <Card key={`card-${rowIdx}-${itmIdx}`} className={itm} />
+          ))}
+        </section>
+      ))}
+
       <section className="row">
         <Card className="col-3" />
         <Card className="col-3" />
