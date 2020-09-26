@@ -1,12 +1,6 @@
 /*
   Variables
 */
-$max-width: 1000px;
-$gutter: 20px;
-$mwnumber: 1000; /*max-width-number*/
-$hgwnumber: 10; /*half-gutter-width-number*/
-$gwnumber: 20; /*half-gutter-width-number*/
-
 /* Grid measurements:
   MAX-WIDTH = 1000px;
   
@@ -20,6 +14,30 @@ $gwnumber: 20; /*half-gutter-width-number*/
   so 960 + 20 + 20 => 1000px
  
  **/
+$max-width: 1000px;
+$gutter: 20px;
+$mwnumber: 1000; /*max-width-number*/
+$hgwnumber: 10; /*half-gutter-width-number*/
+$gwnumber: 20; /*half-gutter-width-number*/
+
+   /* Gutter PADDING HERE:
+   * Each column is padded by half-a-gutter on each side,
+   *
+   * Half a gutter is 10px, 10/960 (context) = 1.041666%
+   *
+   */
+   /* 1/2 gutter 
+        / divided by 
+          max-width less 2 gutters
+      * multiplied by 
+        100
+
+      10 / (1000 - 20 - 20 ) === 10 / 960 = 0.0104166666
+      * 100 = 1.0416666 
+    */
+
+$gutterpadding:1.04166666%;
+
 .row {
   max-width: $max-width;
   padding-left: $gutter;
@@ -40,24 +58,8 @@ $gwnumber: 20; /*half-gutter-width-number*/
 
 .col-3, .col-4, .col-6, .col-12 {
   float: left;
-
-  /* Gutters:
-   * Each column is padded by half-a-gutter on each side,
-   *
-   * Half a gutter is 10px, 10/960 (context) = 1.041666%
-   *
-   */
-   /* 1/2 gutter 
-        / divided by 
-          max-width less 2 gutters
-      * multiplied by 
-        100
-
-      10 / (1000 - 20 - 20 ) === 10 / 960 = 0.0104166666
-      * 100 = 1.0416666 
-    */
-  padding-left: 1.04166666%;
-  padding-right: 1.04166666%;
+  padding-left: $gutterpadding;
+  padding-right: $gutterpadding;
 }
 
 /* Mobile defaults , all full-width*/
@@ -87,4 +89,11 @@ $gwnumber: 20; /*half-gutter-width-number*/
   .col-12 {
     width: 100%;
   }
+}
+
+
+// export vars so that JS can use them
+:export{
+  gutter-width: $gutter;
+  gutter-padding: $gutterpadding;
 }
