@@ -1,17 +1,26 @@
 import { useState, useCallback, useLayoutEffect } from 'react';
 
 function getDimensionObject(node) {
-  const rect = node.getBoundingClientRect();
+  const {
+    width,
+    height,
+    x,
+    top,
+    left,
+    right,
+    bottom,
+    y
+  } = node.getBoundingClientRect();
 
   return {
-    width: rect.width,
-    height: rect.height,
-    top: 'x' in rect ? rect.x : rect.top,
-    left: 'y' in rect ? rect.y : rect.left,
-    x: 'x' in rect ? rect.x : rect.left,
-    y: 'y' in rect ? rect.y : rect.top,
-    right: rect.right,
-    bottom: rect.bottom
+    width,
+    height,
+    right,
+    bottom,
+    top: x ? x : top,
+    left: y ? y : left,
+    x: x ? x : left,
+    y: y ? y : top
   };
 }
 
