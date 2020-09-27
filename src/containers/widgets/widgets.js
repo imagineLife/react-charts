@@ -24,7 +24,8 @@ import ForceLayout from './../../components/ForceLayout';
 
 const rowsOfDivs = [
   ['col-6', 'col-6'],
-  ['col-6', 'col-6']
+  ['col-6', 'col-6'],
+  ['col-3', 'col-3', 'col-3', 'col-3']
 ];
 
 const Widgets = () => {
@@ -68,20 +69,17 @@ const Widgets = () => {
       <section className="row">
         <Line {...lineProps} />
       </section>
+
+      {/* data-driven rows */}
       {rowsOfDivs.map((row, rowIdx) => (
         <section key={`row-of-divs-${rowIdx}`} className="row">
           {row.map((itm, itmIdx) => (
-            <Card key={`card-${rowIdx}-${itmIdx}`} className={itm} />
+            <Card key={`card-${rowIdx}-${itmIdx}`} className={itm}>
+              {itm}
+            </Card>
           ))}
         </section>
       ))}
-
-      <section className="row">
-        <Card className="col-3" />
-        <Card className="col-3" />
-        <Card className="col-3" />
-        <Card className="col-3" />
-      </section>
     </main>
   );
 };
