@@ -14,9 +14,9 @@
   so 960 + 20 + 20 => 1000px
  
  **/
-$max-width: 1000px;
+$max-width: 1200px;
 $gutter: 20px;
-$mwnumber: 1000; /*max-width-number*/
+$mwnumber: 1200; /*max-width-number*/
 $hgwnumber: 10; /*half-gutter-width-number*/
 $gwnumber: 20; /*half-gutter-width-number*/
 
@@ -32,13 +32,13 @@ $gwnumber: 20; /*half-gutter-width-number*/
       * multiplied by 
         100
 
-      10 / (1000 - 20 - 20 ) 
+      10 / (1200 - 20 - 20 ) 
       same as
-      10 / 960 = 0.0104166666
+      10 / 1160 = 0.0104166666
       * 100 = 1.0416666 
     */
 
-$gutterpadding:1.04166666%;
+$gutterpadding:.862069%;
 
 .row {
   max-width: $max-width;
