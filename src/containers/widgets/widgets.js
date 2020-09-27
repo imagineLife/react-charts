@@ -13,6 +13,7 @@ import barData from './../../data/barData.json';
 import forceLayoutData from './../../data/ForceLayout.json';
 
 // Components
+import Row from './../../components/Row';
 import Card from './../../components/Card';
 import Line from './../../components/Line';
 import Treemap from './../../components/Treemap';
@@ -72,11 +73,11 @@ const Widgets = () => {
 
       {/* data-driven rows */}
       {rowsOfDivs.map((row, rowIdx) => (
-        <section key={`row-of-divs-${rowIdx}`} className="row">
+        <Row key={`row-of-divs-${rowIdx}`}>
           {row.map((itm, itmIdx) => (
             <Card key={`card-${rowIdx}-${itmIdx}`} className={itm} />
           ))}
-        </section>
+        </Row>
       ))}
     </main>
   );
