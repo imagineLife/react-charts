@@ -10,13 +10,10 @@ const Card = ({ children, className }) => {
   // div will render without cardDimensions first
   const [cardRef, cardDimensions] = useDimensions();
 
-  console.log('cardDimensions');
-  console.log(cardDimensions);
-
   return (
     <div className={`card ${className}`} ref={cardRef}>
       {children && children}
-      {!children && <p>empty card</p>}
+      {!children && cardDimensions && cardDimensions.width && cardDimensions.height && <p>{`W:${cardDimensions.width} H:${cardDimensions.height}`}</p>}
     </div>
   );
 };
