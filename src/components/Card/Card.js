@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import './Card.css';
+import './Card.scss';
 
 // import gutterpadding
 import sassVars from './../../float-grid.scss';
@@ -7,9 +7,6 @@ import sassVars from './../../float-grid.scss';
 import useDimensions from './../../Hooks/useDimensions';
 
 const Card = ({ children, className }) => {
-  console.log('sassVars');
-  console.log(sassVars);
-
   // div will render without cardDimensions first
   const [cardRef, cardDimensions] = useDimensions();
 
