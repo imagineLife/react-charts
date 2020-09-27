@@ -74,9 +74,7 @@ const Widgets = () => {
       {rowsOfDivs.map((row, rowIdx) => (
         <section key={`row-of-divs-${rowIdx}`} className="row">
           {row.map((itm, itmIdx) => (
-            <Card key={`card-${rowIdx}-${itmIdx}`} className={itm}>
-              {itm}
-            </Card>
+            <Card key={`card-${rowIdx}-${itmIdx}`} className={itm} />
           ))}
         </section>
       ))}
