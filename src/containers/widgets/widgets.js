@@ -26,7 +26,12 @@ import ForceLayout from './../../components/ForceLayout';
 const rowsOfDivs = [
   [{ className: 'col-6' }, { className: 'col-6' }],
   [{ className: 'col-6' }, { className: 'col-6' }],
-  [{ className: 'col-3' }, { className: 'col-3' }, { className: 'col-3' }, { className: 'col-3' }]
+  [
+    { className: 'col-3' },
+    { className: 'col-3' },
+    { className: 'col-3' },
+    { className: 'col-3' }
+  ]
 ];
 
 const Widgets = () => {
