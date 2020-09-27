@@ -24,9 +24,9 @@ import Bar from './../../components/Bar';
 import ForceLayout from './../../components/ForceLayout';
 
 const rowsOfDivs = [
-  ['col-6', 'col-6'],
-  ['col-6', 'col-6'],
-  ['col-3', 'col-3', 'col-3', 'col-3']
+  [{ className: 'col-6' }, { className: 'col-6' }],
+  [{ className: 'col-6' }, { className: 'col-6' }],
+  [{ className: 'col-3' }, { className: 'col-3' }, { className: 'col-3' }, { className: 'col-3' }]
 ];
 
 const Widgets = () => {
@@ -75,7 +75,7 @@ const Widgets = () => {
       {rowsOfDivs.map((row, rowIdx) => (
         <Row key={`row-of-divs-${rowIdx}`}>
           {row.map((itm, itmIdx) => (
-            <Card key={`card-${rowIdx}-${itmIdx}`} className={itm} />
+            <Card key={`card-${rowIdx}-${itmIdx}`} className={itm.className} />
           ))}
         </Row>
       ))}
