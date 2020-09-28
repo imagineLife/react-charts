@@ -11,6 +11,7 @@ import bubbleData from './../../data/MockBubble.json';
 import packedBubbleData from './../../data/PackData.json';
 import barData from './../../data/barData.json';
 import forceLayoutData from './../../data/ForceLayout.json';
+import useWindowSize from './../../Hooks/UseWindowSize';
 
 // Components
 import Row from './../../components/Row';
@@ -23,30 +24,31 @@ import TreeLayout from './../../components/TreeLayout';
 import Bar from './../../components/Bar';
 import ForceLayout from './../../components/ForceLayout';
 
-const rowsOfDivs = [
-  [{ className: 'col-6' }, { className: 'col-6' }],
-  [{ className: 'col-6' }, { className: 'col-6' }],
-  [
-    { className: 'col-3' },
-    { className: 'col-3' },
-    { className: 'col-3' },
-    { className: 'col-3' }
-  ]
-];
-
 const Widgets = () => {
+  const size = useWindowSize();
+
   const dims = {
-    width: 450,
-    height: 250,
     margins: { t: 10, l: 10, b: 10 }
   };
 
   const lineProps = {
-    className: 'thisLine',
+    className: 'col-6 med-height',
     data: lineData,
     type: 'Band',
+    parentSize: size,
     ...dims
   };
+
+  const rowsOfDivs = [
+    [{ child: 'Line', ...lineProps }, { className: 'col-6' }],
+    [{ className: 'col-6' }, { className: 'col-6' }],
+    [
+      { className: 'col-3' },
+      { className: 'col-3' },
+      { className: 'col-3' },
+      { className: 'col-3' }
+    ]
+  ];
 
   const treeMapProps = {
     className: 'treeMap',
@@ -70,6 +72,10 @@ const Widgets = () => {
     ...dims
   };
 
+  const widgetLookup = {
+    Line: Line
+  };
+
   return (
     <main id="responsive" className="test">
       <section className="row">
@@ -79,9 +85,14 @@ const Widgets = () => {
       {/* data-driven rows */}
       {rowsOfDivs.map((row, rowIdx) => (
         <Row key={`row-of-divs-${rowIdx}`}>
-          {row.map((itm, itmIdx) => (
-            <Card key={`card-${rowIdx}-${itmIdx}`} className={itm.className} />
-          ))}
+          {row.map((itm, itmIdx) => {
+            let ChildWidget = itm.child ? widgetLookup[itm.child] : false;
+            return (
+              <Card key={`card-${rowIdx}-${itmIdx}`} className={itm.className}>
+                {ChildWidget && <ChildWidget {...itm} />}
+              </Card>
+            );
+          })}
         </Row>
       ))}
     </main>
