@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, cloneElement } from 'react';
 import './Card.scss';
 
 // import gutterpadding
@@ -12,8 +12,17 @@ const Card = ({ children, className }) => {
 
   return (
     <div className={`card ${className}`} ref={cardRef}>
-      {children && children}
-      {!children && cardDimensions && cardDimensions.width && cardDimensions.height && <p>{`W:${cardDimensions.width} H:${cardDimensions.height}`}</p>}
+      {children &&
+        cloneElement(children, {
+          height: cardDimensions.height,
+          width: cardDimensions.width
+        })}
+      {!children &&
+        cardDimensions &&
+        cardDimensions.width &&
+        cardDimensions.height && (
+          <p>{`W:${cardDimensions.width} H:${cardDimensions.height}`}</p>
+        )}
     </div>
   );
 };
