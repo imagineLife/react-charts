@@ -27,7 +27,7 @@ const Line = ({ width, height, data, margins, type, className }) => {
 
   return (
     <ResponsiveWrapper dimensions={{ w: width, h: height }}>
-      <svg className={`${className}-svg`} {...{ height, width }}>
+      <svg className={`line-svg`} {...{ height, width }}>
         <g
           className="line-group"
           transform={`translate(${margins.l},${margins.t})`}
