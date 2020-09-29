@@ -47,15 +47,20 @@ const Widgets = () => {
     parentSize: size,
     ...dims
   };
-  console.log('barData');
-  console.log(barData);
+
+  const treeMapProps = {
+    className: 'col-6 med-height treeMap',
+    data: treeMapData,
+    parentSize: size,
+    ...dims
+  };
 
   const rowsOfDivs = [
     [
       { child: 'Line', ...lineProps },
       { child: 'Bar', ...barProps }
     ],
-    [{ className: 'col-6' }, { className: 'col-6' }],
+    [{ child: 'Treemap', ...treeMapProps }, { className: 'col-6' }],
     [
       { className: 'col-3' },
       { className: 'col-3' },
@@ -63,12 +68,6 @@ const Widgets = () => {
       { className: 'col-3' }
     ]
   ];
-
-  const treeMapProps = {
-    className: 'treeMap',
-    data: treeMapData,
-    ...dims
-  };
 
   const forceLayoutProps = {
     className: 'this-one',
@@ -80,7 +79,8 @@ const Widgets = () => {
 
   const widgetLookup = {
     Line,
-    Bar
+    Bar,
+    Treemap
   };
 
   return (
