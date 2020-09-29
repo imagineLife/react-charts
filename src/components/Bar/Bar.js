@@ -12,16 +12,18 @@ const Bar = ({
   className,
   barWidthPercentage
 }) => {
+  if (!width && !height) return <p></p>;
+
   const { xDomain, yDomain, points } = data;
 
-  let lineSize = {
+  let barSize = {
     w: width - margins.l,
     h: height - margins.t
   };
 
   let thisScale = `scale${type}`;
 
-  const xScale = dscl[thisScale]().domain(xDomain).range([0, lineSize.w]);
+  const xScale = dscl[thisScale]().domain(xDomain).range([0, barSize.w]);
 
   const yScale = dscl
     .scaleLinear()
@@ -30,7 +32,7 @@ const Bar = ({
 
   return (
     <ResponsiveWrapper dimensions={{ w: width, h: height }}>
-      <svg className={`${className}-svg`} {...{ height, width }}>
+      <svg className={`bar-svg`} {...{ height, width }}>
         <g
           className="bar-group"
           transform={`translate(${margins.l},${margins.t})`}
