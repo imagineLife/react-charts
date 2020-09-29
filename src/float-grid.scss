@@ -20,13 +20,13 @@ $mwnumber: 1200; /*max-width-number*/
 $hgwnumber: 10; /*half-gutter-width-number*/
 $gwnumber: 20; /*half-gutter-width-number*/
 
-   /* Gutter PADDING HERE:
+/* Gutter PADDING HERE:
    * Each column is padded by half-a-gutter on each side,
    *
    * Half a gutter is 10px, 10/960 (context) = 1.041666%
    *
    */
-   /* 1/2 gutter 
+/* 1/2 gutter 
         / divided by 
           max-width less 2 gutters
       * multiplied by 
@@ -38,7 +38,7 @@ $gwnumber: 20; /*half-gutter-width-number*/
       * 100 = 1.0416666 
     */
 
-$gutterpadding:.862069%;
+$gutterpadding: 0.862069%;
 
 .row {
   max-width: $max-width;
@@ -58,17 +58,25 @@ $gutterpadding:.862069%;
   clear: both;
 }
 
-.col-3, .col-4, .col-6, .col-12 {
+.col-1,
+.col-3,
+.col-4,
+.col-6,
+.col-12 {
   float: left;
   padding-left: $gutterpadding;
   padding-right: $gutterpadding;
 }
 
 /* Mobile defaults , all full-width*/
-.col-2, .col-3, .col-4, .col-6, .col-12 {
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-6,
+.col-12 {
   width: 100%;
 }
-
 
 /* Non-mobile, grid */
 @media only screen and (min-width: 640px) {
@@ -93,9 +101,9 @@ $gutterpadding:.862069%;
   }
 }
 
-
 // export vars so that JS can use them
-:export{
-  gutter-width: $gutter;
+:export {
+  gutter: $gutter;
   gutter-padding: $gutterpadding;
+  maxWidth: $max-width;
 }
