@@ -4,6 +4,7 @@ import * as dsh from 'd3-shape';
 import * as dscl from 'd3-scale';
 
 const Line = ({ width, height, data, margins, type, className }) => {
+  if (!width && !height) return <p></p>;
   const { xDomain, yDomain, points } = data;
 
   let lineSize = {
