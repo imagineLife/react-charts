@@ -39,8 +39,22 @@ const Widgets = () => {
     ...dims
   };
 
+  const barProps = {
+    className: 'col-6 med-height',
+    data: barData,
+    type: 'Band',
+    barWidthPercentage: 0.5,
+    parentSize: size,
+    ...dims
+  };
+  console.log('barData');
+  console.log(barData);
+
   const rowsOfDivs = [
-    [{ child: 'Line', ...lineProps }, { className: 'col-6' }],
+    [
+      { child: 'Line', ...lineProps },
+      { child: 'Bar', ...barProps }
+    ],
     [{ className: 'col-6' }, { className: 'col-6' }],
     [
       { className: 'col-3' },
@@ -56,14 +70,6 @@ const Widgets = () => {
     ...dims
   };
 
-  const barProps = {
-    className: 'this-one',
-    data: barData,
-    type: 'Band',
-    barWidthPercentage: 0.5,
-    ...dims
-  };
-
   const forceLayoutProps = {
     className: 'this-one',
     data: forceLayoutData,
@@ -73,7 +79,8 @@ const Widgets = () => {
   };
 
   const widgetLookup = {
-    Line: Line
+    Line,
+    Bar
   };
 
   return (
