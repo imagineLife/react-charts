@@ -34,11 +34,12 @@ const useHierarchy = (data, w, h) => {
 };
 
 const Treemap = ({ width, height, margins, className, data }) => {
+  if (!height && !width) return <p></p>;
   const [hierachyData] = useHierarchy(data, width, height);
 
   const colorScale = scaleOrdinal(schemeDark2);
   return (
-    <svg className={`${className}-svg`} {...{ height, width }}>
+    <svg className={`treemap-svg`} {...{ height, width }}>
       <g
         className="treemap-group"
         transform={`translate(${margins.l},${margins.t})`}
