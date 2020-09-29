@@ -95,7 +95,11 @@ const Widgets = () => {
           {row.map((itm, itmIdx) => {
             let ChildWidget = itm.child ? widgetLookup[itm.child] : false;
             return (
-              <Card key={`card-${rowIdx}-${itmIdx}`} className={itm.className}>
+              <Card
+                key={`card-${rowIdx}-${itmIdx}`}
+                className={itm.className}
+                parentSize={itm.parentSize}
+              >
                 {ChildWidget && <ChildWidget {...itm} />}
               </Card>
             );
