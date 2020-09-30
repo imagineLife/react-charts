@@ -6,12 +6,10 @@ import sassVars from './../../float-grid.scss';
 
 // Hook
 import useDimensions from './../../Hooks/useDimensions';
-console.log('sassVars');
-console.log(sassVars);
+
+// calc dimensional info from sass vars
 const gp = parseFloat(sassVars['gutter-padding'].replace('%', '')) / 100;
 const gutter = parseInt(sassVars.gutter.replace('px', ''));
-console.log('gutter');
-console.log(gutter);
 
 const Card = ({ children, className, parentSize }) => {
   // div will render without cardDimensions first
@@ -21,27 +19,21 @@ const Card = ({ children, className, parentSize }) => {
     - pull gutter-width % from sass file
     - apply gutter-width to cardDimensions fn result
   */
-  console.log('gp');
-  console.log(gp);
+
   const parentWidthLessGutters =
     parentSize && parentSize.width && parentSize.width;
-  console.log('parentWidthLessGutters');
-  console.log(parentWidthLessGutters);
 
-  let appliedGutter = parentWidthLessGutters * gp || null;
-  console.log('parentWidthLessGutters');
-  console.log(parentWidthLessGutters);
+  const appliedGutter = parentWidthLessGutters * gp || null;
+  const twoGutters = appliedGutter * 2;
 
-  console.log('appliedGutter');
-  console.log(appliedGutter);
+  let widthLessGutter = cardDimensions.width - twoGutters;
 
-  let widthLessGutter = cardDimensions.width - appliedGutter;
   return (
     <div className={`card ${className}`} ref={cardRef}>
       {children &&
         cloneElement(children, {
           height: cardDimensions.height,
-          width: cardDimensions.width
+          width: widthLessGutter || cardDimensions.width
         })}
       {!children &&
         cardDimensions &&
