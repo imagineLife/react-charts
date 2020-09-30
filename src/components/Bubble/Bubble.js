@@ -9,6 +9,8 @@ import * as d3S from 'd3-selection';
 import 'd3-selection-multi';
 
 const Bubble = ({ width, height, data, margins, type, className }) => {
+  if (!width && !height) return <p></p>;
+
   const circleGWrapper = useRef();
   const smallerDimension = Math.min(width, height);
 
@@ -49,7 +51,7 @@ const Bubble = ({ width, height, data, margins, type, className }) => {
 
   return (
     <ResponsiveWrapper dimensions={{ w: width, h: height }}>
-      <svg className={`${className}-svg`} {...{ height, width }}>
+      <svg className={`bubble-svg`} {...{ height, width }}>
         <g
           className="bubble-group"
           transform={`translate(${width / 2},${height / 2})`}
