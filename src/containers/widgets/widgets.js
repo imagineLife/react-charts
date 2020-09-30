@@ -55,12 +55,22 @@ const Widgets = () => {
     ...dims
   };
 
+  const bubbleProps = {
+    className: 'col-6 med-height treeMap',
+    data: bubbleData,
+    parentSize: size,
+    ...dims
+  };
+
   const rowsOfDivs = [
     [
       { child: 'Line', ...lineProps },
       { child: 'Bar', ...barProps }
     ],
-    [{ child: 'Treemap', ...treeMapProps }, { className: 'col-6' }],
+    [
+      { child: 'Treemap', ...treeMapProps },
+      { child: 'Bubble', ...bubbleProps }
+    ],
     [
       { className: 'col-3' },
       { className: 'col-3' },
@@ -80,7 +90,8 @@ const Widgets = () => {
   const widgetLookup = {
     Line,
     Bar,
-    Treemap
+    Treemap,
+    Bubble
   };
 
   return (
@@ -93,6 +104,9 @@ const Widgets = () => {
       {rowsOfDivs.map((row, rowIdx) => (
         <Row key={`row-of-divs-${rowIdx}`}>
           {row.map((itm, itmIdx) => {
+            {
+              /* Widget from lookup-object above */
+            }
             let ChildWidget = itm.child ? widgetLookup[itm.child] : false;
             return (
               <Card
@@ -111,7 +125,6 @@ const Widgets = () => {
 };
 
 /*
-  <Treemap {...treeMapProps} />
       <Bubble {...treeMapProps} data={bubbleData} />
       <PackedBubble {...treeMapProps} data={packedBubbleData} />
       <TreeLayout {...treeMapProps} />
