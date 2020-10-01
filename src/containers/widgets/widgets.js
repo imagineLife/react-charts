@@ -80,7 +80,7 @@ const Widgets = () => {
     ],
     [
       { child: 'PackedBubble', ...packedBubbleProps },
-      { child: 'Bubble', ...bubbleProps }
+      { child: 'TreeLayout', ...treeMapProps }
     ],
     [
       { className: 'col-3' },
@@ -103,7 +103,8 @@ const Widgets = () => {
     Bar,
     Treemap,
     Bubble,
-    PackedBubble
+    PackedBubble,
+    TreeLayout
   };
 
   return (
