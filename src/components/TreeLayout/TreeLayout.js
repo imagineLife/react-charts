@@ -24,12 +24,13 @@ const TreeLayout = ({ width, height, margins, className, data }) => {
   const [stratRootData, nodes] = useHierarchy(data);
   const treeIt = tree().size([height * 0.8, width * 0.7]);
   const treeifiedData = treeIt(stratRootData);
+  if (!width || !height) return <p></p>;
 
   return (
-    <svg className={`${className}-svg`} {...{ height, width }}>
+    <svg className={`tree-layout-svg`} {...{ height, width }}>
       <g
         className="tree-layout-g-wrapper"
-        transform={`translate(${margins.l + 75}, ${margins.t})`}
+        transform={`translate(${margins.l + 25}, ${margins.t})`}
       >
         {!treeifiedData
           ? null
