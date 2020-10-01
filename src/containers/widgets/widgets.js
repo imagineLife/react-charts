@@ -62,6 +62,13 @@ const Widgets = () => {
     ...dims
   };
 
+  const packedBubbleProps = {
+    className: 'col-6 med-height packed-bubble',
+    data: packedBubbleData,
+    parentSize: size,
+    ...dims
+  };
+
   const rowsOfDivs = [
     [
       { child: 'Line', ...lineProps },
@@ -69,6 +76,10 @@ const Widgets = () => {
     ],
     [
       { child: 'Treemap', ...treeMapProps },
+      { child: 'Bubble', ...bubbleProps }
+    ],
+    [
+      { child: 'PackedBubble', ...packedBubbleProps },
       { child: 'Bubble', ...bubbleProps }
     ],
     [
@@ -91,7 +102,8 @@ const Widgets = () => {
     Line,
     Bar,
     Treemap,
-    Bubble
+    Bubble,
+    PackedBubble
   };
 
   return (
