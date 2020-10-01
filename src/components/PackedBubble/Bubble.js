@@ -11,7 +11,8 @@ import * as d3H from 'd3-hierarchy';
 import 'd3-selection-multi';
 
 const PackedBubble = ({ width, height, data, margins, type, className }) => {
-  const [visSize] = useState([450, 250]);
+  if (!width || !height) return <p></p>;
+  const [visSize] = useState([width, height]);
 
   const stratifiedData = d3H.stratify()(data);
   const packLayout = d3H.pack().size(visSize);
@@ -24,7 +25,7 @@ const PackedBubble = ({ width, height, data, margins, type, className }) => {
 
   return (
     <ResponsiveWrapper dimensions={{ w: width, h: height }}>
-      <svg className={`${className}-svg`} {...{ height, width }}>
+      <svg className={`packed-bubble-svg`} {...{ height, width }}>
         <g className="bubble-group">
           {childNodes.map((d, idx) => (
             <circle
