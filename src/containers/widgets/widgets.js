@@ -69,6 +69,15 @@ const Widgets = () => {
     ...dims
   };
 
+  const forceLayoutProps = {
+    className: 'col-6 med-height this-one',
+    data: forceLayoutData,
+    type: 'Band',
+    barWidthPercentage: 0.5,
+    parentSize: size,
+    ...dims
+  };
+
   const rowsOfDivs = [
     [
       { child: 'Line', ...lineProps },
@@ -82,6 +91,7 @@ const Widgets = () => {
       { child: 'PackedBubble', ...packedBubbleProps },
       { child: 'TreeLayout', ...treeMapProps }
     ],
+    [{ child: 'ForceLayout', ...forceLayoutProps }, { className: 'col-6' }],
     [
       { className: 'col-3' },
       { className: 'col-3' },
@@ -90,21 +100,14 @@ const Widgets = () => {
     ]
   ];
 
-  const forceLayoutProps = {
-    className: 'this-one',
-    data: forceLayoutData,
-    type: 'Band',
-    barWidthPercentage: 0.5,
-    ...dims
-  };
-
   const widgetLookup = {
     Line,
     Bar,
     Treemap,
     Bubble,
     PackedBubble,
-    TreeLayout
+    TreeLayout,
+    ForceLayout
   };
 
   return (
